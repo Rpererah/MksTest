@@ -9,7 +9,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body{
-    background-color: ${(props) => props.theme.white};
+    background-color: ${(props) => props.theme['gray-100']};
     color: ${(props) => props.theme['gray-600']};
     -webkit-font-smoothing:antialiased
 }
@@ -20,7 +20,7 @@ export const GlobalStyle = createGlobalStyle`
 }
 
 body,input,button{
-    font-style: 'Montserrat';
+    font-family: 'Montserrat';
     font-weight: 400;
     font-size: 1rem;
 
