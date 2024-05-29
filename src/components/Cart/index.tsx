@@ -1,4 +1,3 @@
-import { X } from '@phosphor-icons/react'
 import {
   CartLayout,
   CloseButton,
@@ -9,9 +8,10 @@ import {
   FooterCartButton,
   MainCart,
   FooterCardContainer,
+  IconCloseButton,
 } from './styles'
 import ProductCard from './ProductCard'
-
+import { motion } from 'framer-motion'
 import { VisibilyCardButtonProps } from '../../pages/Home'
 import { useContext } from 'react'
 import { CartContext } from '../../context/CartContext'
@@ -23,19 +23,25 @@ export default function Cart({ onClickCartButton }: VisibilyCardButtonProps) {
       <HeaderCart>
         <TitleCart>Carrinho de compras</TitleCart>
         <CloseButton onClick={onClickCartButton}>
-          <X size={16} />
+          <IconCloseButton />
         </CloseButton>
       </HeaderCart>
       <MainCart>
         {cart.map((item) => (
-          <ProductCard
+          <motion.div
             key={item.id}
-            id={item.id}
-            image={item.photo}
-            price={parseInt(item.price)}
-            quantity={item.quantity ?? 0}
-            title={item.name}
-          />
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6 }}
+          >
+            <ProductCard
+              id={item.id}
+              image={item.photo}
+              price={parseInt(item.price)}
+              quantity={item.quantity ?? 0}
+              title={item.name}
+            />
+          </motion.div>
         ))}
       </MainCart>
       <FooterCardContainer>

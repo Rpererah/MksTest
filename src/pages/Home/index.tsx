@@ -8,6 +8,7 @@ import axios from 'axios'
 import { useQuery } from 'react-query'
 import Product from './productInterface'
 import Loading from '../../components/Loading'
+import { motion } from 'framer-motion'
 
 export interface VisibilyCardButtonProps {
   onClickCartButton: () => void
@@ -15,6 +16,7 @@ export interface VisibilyCardButtonProps {
 
 export default function Home() {
   const [isCartVisible, setIsCartVisible] = useState(false)
+  const [isAnimated, setIsAnimated] = useState(false)
 
   const { data, isLoading, isError } = useQuery(
     'data',
@@ -48,8 +50,15 @@ export default function Home() {
   if (isError) {
     return <div>Ocorreu um erro ao carregar os produtos.</div>
   }
-  function toggleCartVisibility() {
-    setIsCartVisible(!isCartVisible)
+  const toggleCartVisibility = () => {
+    setIsAnimated(!isAnimated)
+    if (isCartVisible) {
+      setTimeout(() => {
+        setIsCartVisible(!isCartVisible)
+      }, 300)
+    } else {
+      setIsCartVisible(!isCartVisible)
+    }
   }
   return (
     <div>
@@ -68,8 +77,22 @@ export default function Home() {
                 quantity={card.quantity}
               />
             ))}
-
-        {isCartVisible ? <Cart onClickCartButton={toggleCartVisibility} /> : ''}
+        {isCartVisible ? (
+          <motion.div
+            style={{ position: 'absolute', right: 0, top: 0 }}
+            initial={{ x: '-100vh', opacity: 0 }}
+            animate={{
+              x: 0,
+              opacity: isAnimated ? 1 : 0,
+            }}
+            transition={{ type: 'spring', stiffness: 110, damping: 25 }}
+            exit={{ opacity: 0 }}
+          >
+            <Cart onClickCartButton={toggleCartVisibility} />
+          </motion.div>
+        ) : (
+          ''
+        )}
       </MainLayout>
       <Footer />
     </div>

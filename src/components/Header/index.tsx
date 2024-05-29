@@ -1,4 +1,3 @@
-import { ShoppingCart } from '@phosphor-icons/react'
 import {
   CartButton,
   CartButtonText,
@@ -6,6 +5,7 @@ import {
   LayoutHeader,
   Logo,
   RegularLogo,
+  StyledShoppingCart,
 } from './styles'
 
 import { VisibilyCardButtonProps } from '../../pages/Home'
@@ -29,7 +29,7 @@ export default function Header({ onClickCartButton }: VisibilyCardButtonProps) {
       </Logo>
       <div>
         <CartButton data-testid="toggle-button" onClick={onClickCartButton}>
-          <ShoppingCart weight="fill" size={18} />
+          <StyledShoppingCart />
           <CartButtonText>{AmountItems}</CartButtonText>
         </CartButton>
       </div>

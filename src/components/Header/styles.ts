@@ -1,3 +1,4 @@
+import { ShoppingCart } from '@phosphor-icons/react'
 import styled from 'styled-components'
 
 export const LayoutHeader = styled.header`
@@ -8,6 +9,10 @@ export const LayoutHeader = styled.header`
   height: 100px;
   background-color: ${(props) => props.theme.blue};
   color: ${(props) => props.theme.white};
+  @media (max-width: 700px) {
+    height: 48px;
+    padding: 1rem;
+  }
 `
 export const Logo = styled.div`
   display: flex;
@@ -34,9 +39,25 @@ export const CartButton = styled.button`
   border: none;
   background-color: ${(props) => props.theme.white};
   color: ${(props) => props.theme.black};
+  @media (max-width: 700px) {
+    height: 26px;
+    width: 52px;
+    font-size: 12px;
+  }
 `
+export const StyledShoppingCart = styled(ShoppingCart)`
+  width: 18px;
+  height: 18px;
 
+  @media (max-width: 700px) {
+    width: 13px;
+    height: 13px;
+  }
+`
 export const CartButtonText = styled.span`
   font-size: 1.125rem;
   font-weight: bold;
+  @media (max-width: 700px) {
+    font-size: 12px;
+  }
 `

@@ -1,5 +1,7 @@
-import { X } from '@phosphor-icons/react'
 import {
+  ContainerInputAndPrice,
+  IconCartCloseButton,
+  ProductCardSmallLabel,
   ProductCartCloseButton,
   ProductCartImagee,
   ProductCartInputButton,
@@ -8,6 +10,7 @@ import {
   ProductCartLayout,
   ProductCartPrice,
   ProductCartText,
+  QuantityContainer,
 } from './styles'
 import { useContext, useEffect, useState } from 'react'
 import { CartContext } from '../../../context/CartContext'
@@ -58,18 +61,24 @@ export default function ProductCard({
     <ProductCartLayout>
       <ProductCartImagee src={image} alt="" />
       <ProductCartText>{title}</ProductCartText>
-      <ProductCartInputContainer>
-        <ProductCartInputButton onClick={handleDecrement}>
-          -
-        </ProductCartInputButton>
-        <ProductCartInputValue>{updatedQuantity}</ProductCartInputValue>
-        <ProductCartInputButton onClick={handleIncrement}>
-          +
-        </ProductCartInputButton>
-      </ProductCartInputContainer>
-      <ProductCartPrice>R${price}</ProductCartPrice>
+      <ContainerInputAndPrice>
+        <QuantityContainer>
+          <ProductCardSmallLabel>Qtd:</ProductCardSmallLabel>
+          <ProductCartInputContainer>
+            <ProductCartInputButton onClick={handleDecrement}>
+              -
+            </ProductCartInputButton>
+            <ProductCartInputValue>{updatedQuantity}</ProductCartInputValue>
+            <ProductCartInputButton onClick={handleIncrement}>
+              +
+            </ProductCartInputButton>
+          </ProductCartInputContainer>
+        </QuantityContainer>
+
+        <ProductCartPrice>R${price}</ProductCartPrice>
+      </ContainerInputAndPrice>
       <ProductCartCloseButton onClick={handleRemoveOneFromCart}>
-        <X size={12} />
+        <IconCartCloseButton />
       </ProductCartCloseButton>
     </ProductCartLayout>
   )

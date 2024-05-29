@@ -1,3 +1,4 @@
+import { X } from '@phosphor-icons/react'
 import styled from 'styled-components'
 
 export const CartLayout = styled.aside`
@@ -14,6 +15,10 @@ export const CartLayout = styled.aside`
   width: 486px;
   padding-top: 2rem;
   box-shadow: -5px 0px 6px rgba(0, 0, 0, 0.13);
+  @media (max-width: 700px) {
+    width: 80vw;
+    padding-top: 2rem;
+  }
 `
 
 export const CloseButton = styled.button`
@@ -28,6 +33,22 @@ export const CloseButton = styled.button`
   width: 38px;
   border-radius: 999px;
   margin-right: 2rem;
+  @media (max-width: 700px) {
+    width: 45px;
+    height: 45px;
+    padding: 0.5rem;
+    margin-right: 1rem;
+  }
+`
+
+export const IconCloseButton = styled(X)`
+  height: 16px;
+  width: 16px;
+  @media (max-width: 700px) {
+    height: 40px;
+    width: 40px;
+    color: ${(props) => props.theme.blue};
+  }
 `
 export const TitleCart = styled.p`
   font-size: 1.688rem;
@@ -35,6 +56,10 @@ export const TitleCart = styled.p`
   max-width: 180px;
   color: ${(props) => props.theme.white};
   margin-left: 3rem;
+
+  @media (max-width: 700px) {
+    margin-left: 1rem;
+  }
 `
 export const HeaderCart = styled.header`
   display: flex;
@@ -45,6 +70,12 @@ export const FooterCard = styled.footer`
   justify-content: space-between;
   padding-left: 1rem;
   padding-right: 2.5rem;
+  padding-top: 1rem;
+
+  @media (max-width: 700px) {
+    justify-content: space-around;
+    padding-right: 1rem;
+  }
 `
 
 export const FooterCardContainer = styled.footer`
@@ -58,6 +89,12 @@ export const FooterCartText = styled.p`
   color: ${(props) => props.theme.white};
   margin-left: 3rem;
   margin-right: 2rem;
+  @media (max-width: 700px) {
+    margin-left: 0rem;
+    margin-right: 0rem;
+
+    font-size: 28px;
+  }
 `
 export const FooterCartButton = styled.button`
   display: flex;
@@ -70,6 +107,9 @@ export const FooterCartButton = styled.button`
   width: 100%;
   padding-left: -2rem;
   padding-right: -1rem;
+  @media (max-width: 700px) {
+    height: 65px;
+  }
 `
 export const MainCart = styled.main`
   display: flex;
@@ -79,4 +119,9 @@ export const MainCart = styled.main`
   max-height: 700px;
   overflow-y: auto;
   padding: 1rem 0rem;
+  @media (max-width: 700px) {
+    align-items: center;
+    padding: 1rem;
+    margin-left: -3rem;
+  }
 `
