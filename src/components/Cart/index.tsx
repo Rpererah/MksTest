@@ -11,34 +11,37 @@ import {
   FooterCardContainer,
 } from './styles'
 import ProductCard from './ProductCard'
-import TestImage from './../../assets/test.png'
-export default function Cart() {
+
+import { VisibilyCardButtonProps } from '../../pages/Home'
+import { useContext } from 'react'
+import { CartContext } from '../../context/CartContext'
+
+export default function Cart({ onClickCartButton }: VisibilyCardButtonProps) {
+  const { cart, total } = useContext(CartContext)
   return (
     <CartLayout>
       <HeaderCart>
         <TitleCart>Carrinho de compras</TitleCart>
-        <CloseButton>
+        <CloseButton onClick={onClickCartButton}>
           <X size={16} />
         </CloseButton>
       </HeaderCart>
       <MainCart>
-        <ProductCard
-          image={TestImage}
-          price={399}
-          quantity={1}
-          title="Apple Watch Series 4 GPS"
-        />
-        <ProductCard
-          image={TestImage}
-          price={399}
-          quantity={1}
-          title="Apple Watch Series 4 GPS"
-        />
+        {cart.map((item) => (
+          <ProductCard
+            key={item.id}
+            id={item.id}
+            image={item.photo}
+            price={parseInt(item.price)}
+            quantity={item.quantity ?? 0}
+            title={item.name}
+          />
+        ))}
       </MainCart>
       <FooterCardContainer>
         <FooterCard>
           <FooterCartText>Total</FooterCartText>
-          <FooterCartText>R$798</FooterCartText>
+          <FooterCartText>R${total}</FooterCartText>
         </FooterCard>
 
         <FooterCartButton>

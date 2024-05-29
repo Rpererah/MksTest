@@ -26,11 +26,6 @@ export const ProductCartText = styled.p`
   max-width: 120px;
 `
 
-export const ProductCartInput = styled.input`
-  width: 50px;
-  height: 19px;
-`
-
 export const ProductCartPrice = styled.p`
   font-size: 0.875rem;
   font-weight: bold;
@@ -48,4 +43,41 @@ export const ProductCartCloseButton = styled.button`
   height: 18px;
   width: 18px;
   padding: 0.2rem;
+`
+
+export const ProductCartInputContainer = styled.div`
+  display: flex;
+  align-items: center;
+  border: 1px solid ${(props) => props.theme['gray-400']};
+  border-radius: 5px;
+  overflow: hidden;
+`
+
+export const ProductCartInputValue = styled.div`
+  width: 40px;
+  text-align: center;
+  font-size: 18px;
+`
+
+export const ProductCartInputButton = styled.button`
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  &:focus {
+    outline: none;
+    border: none;
+    box-shadow: none;
+  }
+
+  &:focus-visible {
+    outline: none;
+    border: none;
+    box-shadow: none;
+  }
 `

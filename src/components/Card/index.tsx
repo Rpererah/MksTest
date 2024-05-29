@@ -9,15 +9,41 @@ import {
   TitleCard,
   TitleText,
 } from './styles'
+import { useContext } from 'react'
+import { CartContext } from '../../context/CartContext'
+import Product from '../../pages/Home/productInterface'
 
 interface CardProps {
+  id: number
   image: string
   title: string
   price: number
   description: string
+  quantity: number | 0
 }
 
-export default function Card({ image, title, price, description }: CardProps) {
+export default function Card({
+  id,
+  image,
+  title,
+  price,
+  description,
+  quantity,
+}: CardProps) {
+  const { addToCart } = useContext(CartContext)
+
+  function handleAddToCart() {
+    const productAdd: Product = {
+      id,
+      photo: image,
+      name: title,
+      description,
+      price: price.toString(),
+      quantity,
+    }
+
+    addToCart(productAdd)
+  }
   return (
     <CardContainer>
       <CardLayout>
@@ -31,7 +57,7 @@ export default function Card({ image, title, price, description }: CardProps) {
         </TitleCard>
         <DescribeText>{description}</DescribeText>
       </CardLayout>
-      <BuyButton>
+      <BuyButton onClick={handleAddToCart}>
         <ShoppingBagOpen size={14} />
         COMPRAR
       </BuyButton>

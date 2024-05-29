@@ -73,8 +73,10 @@ export const FooterCartButton = styled.button`
 `
 export const MainCart = styled.main`
   display: flex;
-  margin-top: 3rem;
   flex-direction: column;
   flex: 1;
   gap: 20px;
+  max-height: 700px;
+  overflow-y: auto;
+  padding: 1rem 0rem;
 `
