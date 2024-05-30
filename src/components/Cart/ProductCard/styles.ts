@@ -87,10 +87,12 @@ export const ProductCartCloseButton = styled.button`
 export const IconCartCloseButton = styled(X)`
   height: 12px;
   width: 12px;
-  color: ${(props) => props.theme.black};
+  color: ${(props) => props.theme.white};
+
   @media (max-width: 700px) {
     height: 30px;
     width: 30px;
+    color: ${(props) => props.theme.black};
   }
 `
 
